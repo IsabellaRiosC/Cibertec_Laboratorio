@@ -1,5 +1,12 @@
 ﻿@model WebDeveloper.Model.Person
 
+@helper GetDate(string demo)
+{
+  
+    <h1>@demo - @DateTime.Now.ToShortDateString()</h1>    
+    
+}
+
 @{
     ViewBag.Title = "Create";
 }
