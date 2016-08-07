@@ -21,7 +21,8 @@ namespace WebDeveloper.Controllers
         //}
         public ActionResult Index()
         {
-            return View(_person.GetList());
+         //   return View(_person.GetList());
+            return View(_person.GetListBySize(15));
         }
 
         //carga la base de la pagina
@@ -34,6 +35,16 @@ namespace WebDeveloper.Controllers
         public ActionResult Create(Person person)
         {
             if (!ModelState.IsValid) return View(person);
+
+            person.rowguid = Guid.NewGuid();
+
+            person.BusinessEntity = new BusinessEntity
+            {
+
+                rowguid = person.rowguid,
+                ModifiedDate = DateTime.Now
+            };
+
             _person.Add(person);
             return RedirectToAction("Index");
 
@@ -65,10 +76,17 @@ namespace WebDeveloper.Controllers
         // guarda la informacion a la base de datos
         public ActionResult Delete(Person person)
         {
-           
+            person = _person.GetById(person.BusinessEntityID);
             _person.Delete(person);
             return RedirectToAction("Index");
 
+        }
+
+        public ActionResult Details(int id)
+        {
+            var person = _person.GetById(id);
+            if (person == null) return RedirectToAction("Index");
+            return View(person);
         }
 
     }
