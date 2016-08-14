@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebDeveloper.Filters;
 using WebDeveloper.Model;
 using WebDeveloper.Repository;
 
 namespace WebDeveloper.Controllers
 {
-    [AudiControl]
     public class PersonController : Controller
     {
         // GET: Person
