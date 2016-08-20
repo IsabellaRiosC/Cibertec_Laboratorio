@@ -1,0 +1,33 @@
+﻿
+@*
+log4net
+Elmah
+
+slack
+*@
+
+@helper GetDate(string demo)
+{
+    <h1>@demo - @DateTime.Now.ToShortDateString()</h1>
+}
+
+@helper GetModal()
+{
+    <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>    
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+}
+
+

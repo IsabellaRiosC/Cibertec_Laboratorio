@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressRepository.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="DbExtensions.cs" />
     <Compile Include="IRepository.cs" />

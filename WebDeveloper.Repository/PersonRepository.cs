@@ -10,44 +10,35 @@ namespace WebDeveloper.Repository
 {
     public class PersonRepository : BaseRepository<Person>
     {
-         public Person GetById(int id)
+        public Person GetById(int id)
         {
-
             using (var db = new WebContextDb())
             {
-                return db.Person.FirstOrDefault(p => p.BusinessEntityID == id);
-
+                return db.Person.FirstOrDefault(p=> p.BusinessEntityID == id);
             }
-
         }
 
         public List<Person> GetListBySize(int size)
         {
-
             using (var db = new WebContextDb())
             {
-
                 return db.Person
-                    .OrderByDescending(p => p.ModifiedDate)
+                    .OrderByDescending(p=>p.ModifiedDate)
                     .Take(size).ToList();
-
             }
-
-
         }
 
         public Person GetCompletePersonById(int id)
         {
-
-            using(var db = new WebContextDb())
+            using (var db = new WebContextDb())
             {
                 return db.Person
-                 .Include(p => p.BusinessEntity)
-                .FirstOrDefault(p => p.BusinessEntityID == id);
-
+                    .Include(p=>p.BusinessEntity)
+                    .FirstOrDefault(p=>p.BusinessEntityID==id);
             }
-
-
         }
+
+
+
     }
 }

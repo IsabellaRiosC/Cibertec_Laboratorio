@@ -1,13 +1,14 @@
 ﻿@model WebDeveloper.Model.Person
 
+
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create";
 }
 
-<h2>Edit</h2>
+<h2>Create</h2>
+@*@CustomHelper.GetDate("Test")*@
 
-
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
@@ -15,8 +16,6 @@
         <h4>Person</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.BusinessEntityID)
-
         <div class="form-group">
             @Html.LabelFor(model => model.PersonType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -99,18 +98,25 @@
             </div>
         </div>
 
-       
+        @*<div class="form-group">
+        @Html.LabelFor(model => model.rowguid, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.rowguid, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.rowguid, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.ModifiedDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ModifiedDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ModifiedDate, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div> *@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
