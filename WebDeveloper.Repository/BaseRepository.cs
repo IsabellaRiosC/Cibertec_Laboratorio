@@ -4,45 +4,71 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace WebDeveloper.Repository
 {
     public class BaseRepository<T> : IRepository<T> where T : class
     {
+        protected WebContextDb db;
+
+        public BaseRepository()
+        {
+            db = new WebContextDb();
+        }
         public int Add(T entity)
         {
-            using (var db = new WebContextDb())
-            {
+           
                 db.Entry(entity).State = EntityState.Added;
                 return db.SaveChanges();
-            }
+            
                 
         }
 
         public int Delete(T entity)
         {
-            using (var db = new WebContextDb())
-            {
+           
                 db.Entry(entity).State = EntityState.Deleted;
                 return db.SaveChanges();
-            }
+            
+        }
+
+        public T GetById(Expression<Func<T, bool>> match)
+        {
+          
+                
+                return db.Set<T>().FirstOrDefault(match);
+           
         }
 
         public List<T> GetList()
         {
-            using (var db = new WebContextDb())
+            
             return db.Set<T>().ToList();
 
             
         }
 
+        public IEnumerable<T> OrderedListByDateAndSize(Expression<Func<T, DateTime>> match, int size)
+        {
+            return db.Set<T>().OrderByDescending(match).Take(size);
+        }
+
+        public IEnumerable<T> PaginatedList(Expression<Func<T, DateTime>> match, int page, int size)
+        {
+            return db.Set<T>().OrderByDescending(match).Page(page,size);
+        }
+
         public int Update(T entity)
         {
-            using (var db = new WebContextDb())
-            {
+           
                 db.Entry(entity).State = EntityState.Modified;
                 return db.SaveChanges();
-            }
+            
         }
+
+
+
+
     }
 }

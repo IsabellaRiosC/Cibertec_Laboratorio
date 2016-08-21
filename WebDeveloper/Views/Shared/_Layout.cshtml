@@ -20,16 +20,15 @@
                     @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
                 <nav class="navbar-collapse collapse">
-                    @*
-                        @Html.ActionLink("Home", "Index", "Home")
-                        @Html.ActionLink("About", "About", "Home")
-                        @Html.ActionLink("Contact", "Contact", "Home")
-                    *@
+                   @if(Request.IsAuthenticated)
+                   { 
                     <ul class="nav navbar-nav">
-                        <li><a href="@Html.ActionLink("Person","Index","Person")">Person</a></li>
-                        <li><a href="@Html.ActionLink("Address","Index","Address")">Person</a></li>
+                        <li>@Html.ActionLink("Person","Index", new { area = "Personnel", Controller = "Person" })</li>
+                        <li>@Html.ActionLink("Address","Index", new { area = "Personnel", Controller = "Address" })</li>
                         <li><a href="#">Opción 3</a></li>
                     </ul>
+                   }
+                    @Html.Partial("_LoginPartial");
                 </nav>
             </div>
         </div>
