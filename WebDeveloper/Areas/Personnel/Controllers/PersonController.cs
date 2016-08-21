@@ -13,8 +13,7 @@ namespace WebDeveloper.Areas.Personnel.Controllers
     public class PersonController : Controller
     {
         // GET: Person
-        // Address / BussinessEntity / BussinessEntityAddress / BussinessEntityContact / EmailAddress / PersonPhone
-        //http://antoniogonzalezm.es/google-hacking-46-ejemplos-hacker-contrasenas-usando-google-enemigo-peor/
+ 
         private PersonRepository _person = new PersonRepository();        
         public ActionResult Index()
         {
