@@ -91,9 +91,48 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.BusinessEntityID }) |
             @Html.ActionLink("Details", "Details", new { id=item.BusinessEntityID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BusinessEntityID })
+            @Html.ActionLink("Delete", "Delete", new { id = item.BusinessEntityID }) |
+            @Ajax.ActionLink("Emails","EmailByPerson",
+           new { area="Personnel", controller="EmailAddress", id = item.BusinessEntityID },
+
+           new AjaxOptions()
+           {
+               HttpMethod="GET",
+               AllowCache=false,
+               InsertionMode= InsertionMode.Replace,
+               UpdateTargetId= "emailContent"
+
+           }) |
+
+            @Ajax.ActionLink("Phone", "PhoneByPerson",
+           new { area = "Personnel", controller = "PersonPhone", id = item.BusinessEntityID },
+
+           new AjaxOptions()
+           {
+               HttpMethod = "GET",
+               AllowCache = false,
+               InsertionMode = InsertionMode.Replace,
+               UpdateTargetId = "phoneContent"
+
+           })
+
         </td>
     </tr>
 }
 
 </table>
+
+<div class="row">
+
+    <div id="emailContent" class="col-lg-12"></div>
+    <div id="phoneContent" class="col-lg-12"></div>
+</div>
+
+@*<div class="row">
+
+    <div id="phoneContent" class="col-lg-12"></div>
+
+</div>*@
+
+
+@Scripts.Render("~/bundles/unobtrusive-ajax")
