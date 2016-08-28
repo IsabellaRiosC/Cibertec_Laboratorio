@@ -15,6 +15,7 @@ namespace WebDeveloper.Areas.Personnel.Controllers
             return View();
         }
 
+        //
         public ActionResult PhoneByPerson(int id)
         {
             return PartialView("_Phone",
@@ -22,5 +23,7 @@ namespace WebDeveloper.Areas.Personnel.Controllers
                 );
 
         }
+
+
     }
 }
