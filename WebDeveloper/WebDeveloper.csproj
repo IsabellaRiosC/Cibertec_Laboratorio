@@ -211,14 +211,15 @@
     <Content Include="Areas\Personnel\Views\Address\Details.cshtml" />
     <Content Include="Areas\Personnel\Views\Address\Edit.cshtml" />
     <Content Include="Areas\Personnel\Views\Address\Index.cshtml" />
-    <Content Include="Areas\Personnel\Views\Person\Create.cshtml" />
-    <Content Include="Areas\Personnel\Views\Person\Delete.cshtml" />
-    <Content Include="Areas\Personnel\Views\Person\Details.cshtml" />
-    <Content Include="Areas\Personnel\Views\Person\Edit.cshtml" />
+    <Content Include="Areas\Personnel\Views\Person\_Create.cshtml" />
+    <Content Include="Areas\Personnel\Views\Person\_Delete.cshtml" />
+    <Content Include="Areas\Personnel\Views\Person\_Details.cshtml" />
+    <Content Include="Areas\Personnel\Views\Person\_Edit.cshtml" />
     <Content Include="Areas\Personnel\Views\Person\Index.cshtml" />
     <Content Include="Areas\Personnel\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Personnel\Views\EmailAddress\_Email.cshtml" />
     <Content Include="Areas\Personnel\Views\PersonPhone\_Phone.cshtml" />
+    <Content Include="Areas\Personnel\Views\Person\_List.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -236,6 +237,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Shared\modal.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -264,6 +266,7 @@
     <Folder Include="Areas\Personnel\Models\" />
     <Folder Include="Areas\Personnel\Views\PersonBase\" />
     <Folder Include="Areas\Personnel\Views\Shared\" />
+    <Folder Include="scss\bootstrap\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

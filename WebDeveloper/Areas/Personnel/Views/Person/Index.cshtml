@@ -5,134 +5,45 @@
 }
 
 <h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @CustomHelper.Message("successMessage","success","The record was created.")
+
+    @CustomHelper.Message("editMessage","info","The record was updated.")
+    
+    @CustomHelper.Message("deleteMessage","danger","The record was deleted.")
+
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonType)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.NameStyle)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MiddleName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Suffix)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmailPromotion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AdditionalContactInfo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Demographics)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rowguid)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedDate)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonType)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.NameStyle)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MiddleName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Suffix)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailPromotion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdditionalContactInfo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Demographics)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rowguid)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BusinessEntityID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BusinessEntityID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.BusinessEntityID }) |
-            @Ajax.ActionLink("Emails","EmailByPerson",
-           new { area="Personnel", controller="EmailAddress", id = item.BusinessEntityID },
-
-           new AjaxOptions()
-           {
-               HttpMethod="GET",
-               AllowCache=false,
-               InsertionMode= InsertionMode.Replace,
-               UpdateTargetId= "emailContent"
-
-           }) |
-
-            @Ajax.ActionLink("Phone", "PhoneByPerson",
-           new { area = "Personnel", controller = "PersonPhone", id = item.BusinessEntityID },
-
-           new AjaxOptions()
-           {
-               HttpMethod = "GET",
-               AllowCache = false,
-               InsertionMode = InsertionMode.Replace,
-               UpdateTargetId = "phoneContent"
-
-           })
-
-        </td>
-    </tr>
-}
-
-</table>
-
-<div class="row">
-
-    <div id="emailContent" class="col-lg-12"></div>
-    <div id="phoneContent" class="col-lg-12"></div>
-</div>
-
-@*<div class="row">
-
-    <div id="phoneContent" class="col-lg-12"></div>
-
-</div>*@
+<p>
+   <a href="#" 
+      onclick="getModalContent('@Url.Action("Create",new { area="Personnel" })')"
+      data-toggle="modal"
+      data-target="#modal-container"
+      class="btn btn-success">
+       <span class="glyphicon glyphicon-plus"></span> Create New
+   </a>
+</p>
 
 
+
+<div id="personContent"></div>
+
+@CustomHelper.GetModal("Person")
+<script src="~/Scripts/Shared/modal.js" type="text/javascript"></script>
 @Scripts.Render("~/bundles/unobtrusive-ajax")
+
+<script type="text/javascript">
+    var rowsByPage = 15;
+    $(function () {
+
+        goToPage(1);
+    });
+
+    function goToPage(page) {
+        var url = '@Url.Action("List",new { controller="Person", area="Personnel"})';
+        var finalUrl = url + "?page" + page + "&size=" + rowsByPage;
+        $.get(finalUrl, function (data) {
+            $('#personContent').html(data);
+        });
+
+    }
+</script>

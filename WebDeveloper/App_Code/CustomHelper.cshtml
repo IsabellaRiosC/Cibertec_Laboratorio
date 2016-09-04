@@ -11,7 +11,7 @@ slack
     <h1>@demo - @DateTime.Now.ToShortDateString()</h1>
 }
 
-@helper GetModal()
+@helper GetModal(string title)
 {
     <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -22,6 +22,7 @@ slack
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <h4 class="modal-title">@title</h4>
                 </div>
                 <div class="modal-body">
                 </div>    
@@ -30,4 +31,18 @@ slack
     </div><!-- /.modal -->
 }
 
+@helper Message(string id,string action,
+                 string message)
+    {
+     <div id="@id" class="hidden">
+         <div  class="alert alert-@action">
+             <a href="#"
+                class="close"
+                data-dismiss="alert"
+                aria-label="clos">&times;</a>
+             @message
 
+         </div>
+     </div>
+    
+    }

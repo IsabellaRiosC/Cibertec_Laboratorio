@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebDeveloper.Filters;
@@ -22,15 +23,30 @@ namespace WebDeveloper.Areas.Personnel.Controllers
           //  return View(_repository.PaginatedList((x => x.ModifiedDate), 2, 30));
         }
 
+        public ActionResult List(int? page, int? size)
+        {
+            if (!page.HasValue || !size.HasValue)
+            {
+
+                page = 1;
+                size = 15;
+
+            }
+            return PartialView("_List",_repository.PaginatedList((x => x.ModifiedDate),
+                page.Value,
+                size.Value));
+            
+        }
         public ActionResult Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         [HttpPost]
         public ActionResult Create(Person person)
         {
-            if (!ModelState.IsValid) return View(person);
+            if (!ModelState.IsValid)
+                return PartialView("_Create",person);
             person.rowguid = Guid.NewGuid();
             person.ModifiedDate = DateTime.Now;
             person.BusinessEntity = new BusinessEntity
@@ -40,29 +56,29 @@ namespace WebDeveloper.Areas.Personnel.Controllers
             };
 
             _repository.Add(person);
-            return RedirectToAction("Index");
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
         public ActionResult Edit(int id)
         {
             var person = _repository.GetById(x=> x.BusinessEntityID==id);
             if (person == null) return RedirectToAction("Index");
-            return View(person);
+            return PartialView("_Edit",person);
         }
 
         [HttpPost]
         public ActionResult Edit(Person person)
         {
-         //   if (!ModelState.IsValid) return View(person);
+            if (!ModelState.IsValid) return PartialView("_Edit", person);
             _repository.Update(person);
-            return RedirectToAction("Index");
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
         public ActionResult Delete(int id)
         {
             var person = _repository.GetById(x => x.BusinessEntityID == id);
             if (person == null) return RedirectToAction("Index");
-            return View(person);
+            return PartialView("_Delete",person);
         }
 
         [HttpPost]
@@ -70,7 +86,7 @@ namespace WebDeveloper.Areas.Personnel.Controllers
         {
          //   person = _repository.GetById(x => x.BusinessEntityID == person.BusinessEntityID);   
             _repository.Delete(person);
-            return RedirectToAction("Index");
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
 
@@ -78,7 +94,7 @@ namespace WebDeveloper.Areas.Personnel.Controllers
         {
             var person = _repository.GetById(x => x.BusinessEntityID == id);
             if (person == null) return RedirectToAction("Index");
-            return View(person);
+            return PartialView("_Details",person);
         }
     }
 }
