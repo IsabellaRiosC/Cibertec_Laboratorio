@@ -18,6 +18,16 @@ namespace WebDeveloper
             bundles.Add(new ScriptBundle("~/bundles/unobtrusive-ajax").Include(
                      "~/Scripts/jquery.unobtrusive-ajax.js"));
 
+
+            bundles.Add(new ScriptBundle("~/bundles/modal").Include(
+                   "~/Scripts/Shared/modal.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/paginator").Include(
+                  "~/Scripts/jquery.bootpag.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/person").Include(
+                  "~/Areas/Personnel/Scripts/Person.js"));
+
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información. De este modo, estará
             // preparado para la producción y podrá utilizar la herramienta de compilación disponible en http://modernizr.com para seleccionar solo las pruebas que necesite.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

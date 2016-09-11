@@ -29,7 +29,7 @@ namespace WebDeveloper.Areas.Personnel.Controllers
             {
 
                 page = 1;
-                size = 15;
+                size = 10;
 
             }
             return PartialView("_List",_repository.PaginatedList((x => x.ModifiedDate),
@@ -37,9 +37,20 @@ namespace WebDeveloper.Areas.Personnel.Controllers
                 size.Value));
             
         }
+
+        public int PageTotal(int rows)
+        {            
+            if (rows <= 0) return 0;
+            var count = _repository.GetList().Count;
+            return count % rows > 0 ? (count / rows) + 1: count / rows;
+
+            
+
+        }
         public ActionResult Create()
         {
             return PartialView("_Create");
+           
         }
 
         [HttpPost]
@@ -61,9 +72,13 @@ namespace WebDeveloper.Areas.Personnel.Controllers
 
         public ActionResult Edit(int id)
         {
-            var person = _repository.GetById(x=> x.BusinessEntityID==id);
+
+            var person = _repository.GetById(x => x.BusinessEntityID == id);
             if (person == null) return RedirectToAction("Index");
-            return PartialView("_Edit",person);
+            return PartialView("_Edit", person);
+
+           
+
         }
 
         [HttpPost]
@@ -96,5 +111,7 @@ namespace WebDeveloper.Areas.Personnel.Controllers
             if (person == null) return RedirectToAction("Index");
             return PartialView("_Details",person);
         }
+
+      
     }
 }

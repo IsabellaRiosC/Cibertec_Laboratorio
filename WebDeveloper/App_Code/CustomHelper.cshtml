@@ -46,3 +46,17 @@ slack
      </div>
     
     }
+
+@helper RowSizeDropdown()
+{
+    <div class="col-lg-4 page-size">
+        <div class="form-group">
+            <select class="form-control col-lg-1" id="rowsByPage" onchange="changeSize();">
+                <option disabled="" selected="selected">-- Rows by Page --</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+            </select>
+        </div>
+    </div>
+}
