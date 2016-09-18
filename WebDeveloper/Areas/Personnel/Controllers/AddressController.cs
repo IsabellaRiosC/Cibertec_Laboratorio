@@ -12,8 +12,15 @@ namespace WebDeveloper.Areas.Personnel.Controllers
     public class AddressController : PersonBaseController<Address>
     {
         // GET: Personnel/Address
-      //    private AddressRepository _repository = new AddressRepository();
-       
+        //    private AddressRepository _repository = new AddressRepository();
+        public AddressController(IRepository<Address> repository)
+            :base(repository)
+        {
+
+
+
+        }
+
 
         public ActionResult Index()
         {

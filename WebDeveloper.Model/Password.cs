@@ -11,7 +11,7 @@ namespace WebDeveloper.Model
     [Table("Person.Password")]
     public partial class Password
     {
-        [Key]
+        [Key, ForeignKey("Person")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int BusinessEntityID { get; set; }
 

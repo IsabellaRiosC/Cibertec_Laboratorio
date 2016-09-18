@@ -16,10 +16,17 @@ namespace WebDeveloper.Repository
         {
             db = new WebContextDb();
         }
+
+        public BaseRepository(WebContextDb webcontext)
+        {
+            db = webcontext;
+        }
+
         public int Add(T entity)
         {
-           
-                db.Entry(entity).State = EntityState.Added;
+
+            //db.Entry(entity).State = EntityState.Added;
+            db.Set<T>().Add(entity);
                 return db.SaveChanges();
             
                 
@@ -29,6 +36,7 @@ namespace WebDeveloper.Repository
         {
            
                 db.Entry(entity).State = EntityState.Deleted;
+
                 return db.SaveChanges();
             
         }
@@ -59,11 +67,11 @@ namespace WebDeveloper.Repository
             return db.Set<T>().OrderByDescending(match).Page(page,size);
         }
 
-        public int Update(T entity)
-        {
-           
-                db.Entry(entity).State = EntityState.Modified;
-                return db.SaveChanges();
+        public int Update(T entity)        {
+
+             db.Entry(entity).State = EntityState.Modified;
+
+            return db.SaveChanges();
             
         }
 
