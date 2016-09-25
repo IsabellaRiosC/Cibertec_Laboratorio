@@ -13,6 +13,7 @@ namespace WebDeveloper.API
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            ConfigureDependency();
         }
     }
 }
