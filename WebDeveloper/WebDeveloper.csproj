@@ -209,11 +209,22 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.Injector.cs" />
     <Compile Include="Areas\Personnel\Controllers\AddressController.cs" />
+    <Compile Include="Areas\Personnel\Controllers\AddressTypeController.cs" />
+    <Compile Include="Areas\Personnel\Controllers\BusinessEntityAddressController.cs" />
+    <Compile Include="Areas\Personnel\Controllers\BusinessEntityContactController.cs" />
+    <Compile Include="Areas\Personnel\Controllers\BusinessEntityController.cs" />
+    <Compile Include="Areas\Personnel\Controllers\ContactTypeController.cs" />
+    <Compile Include="Areas\Personnel\Controllers\CountryRegionController.cs" />
     <Compile Include="Areas\Personnel\Controllers\EmailAddressController.cs" />
+    <Compile Include="Areas\Personnel\Controllers\PasswordController.cs" />
     <Compile Include="Areas\Personnel\Controllers\PersonBaseController.cs" />
     <Compile Include="Areas\Personnel\Controllers\PersonController.cs" />
     <Compile Include="Areas\Personnel\Controllers\PersonPhoneController.cs" />
+    <Compile Include="Areas\Personnel\Controllers\PhoneNumberTypeController.cs" />
+    <Compile Include="Areas\Personnel\Controllers\PictureController.cs" />
+    <Compile Include="Areas\Personnel\Controllers\StateProvinceController.cs" />
     <Compile Include="Areas\Personnel\Models\PersonViewModel.cs" />
+    <Compile Include="Areas\Personnel\Models\PictureViewModel.cs" />
     <Compile Include="Areas\Personnel\PersonnelAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -231,6 +242,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Personnel\Scripts\FileUpload.js" />
     <Content Include="Areas\Personnel\Scripts\Person.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -262,6 +274,7 @@
     <Content Include="Areas\Personnel\Views\EmailAddress\_Email.cshtml" />
     <Content Include="Areas\Personnel\Views\PersonPhone\_Phone.cshtml" />
     <Content Include="Areas\Personnel\Views\Person\_List.cshtml" />
+    <Content Include="Areas\Personnel\Views\Picture\FileUpload.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -282,7 +295,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Shared\modal.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -346,7 +361,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1242</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/WebDeveloper</IISUrl>
+          <IISUrl>http://localhost:5326/WebDeveloper</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

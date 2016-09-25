@@ -1,19 +1,7 @@
-﻿
-@*
-log4net
-Elmah
-
-slack
-*@
-
-@helper GetDate(string demo)
+﻿@helper GetModal(string title)
 {
-    <h1>@demo - @DateTime.Now.ToShortDateString()</h1>
-}
-
-@helper GetModal(string title)
-{
-    <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="modal-container"
+         tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -25,37 +13,37 @@ slack
                     <h4 class="modal-title">@title</h4>
                 </div>
                 <div class="modal-body">
-                </div>    
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+                </div>
+            </div>
+        </div>
+    </div>
 }
 
-@helper Message(string id,string action,
-                 string message)
-    {
-     <div id="@id" class="hidden">
-         <div  class="alert alert-@action">
-             <a href="#"
-                class="close"
-                data-dismiss="alert"
-                aria-label="clos">&times;</a>
-             @message
-
-         </div>
-     </div>
-    
-    }
-
-@helper RowSizeDropdown()
+@helper Message(string id, string action, string type, string message)
 {
+    <div id="@id" class="hidden">
+        <div class="alert alert-@type">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>@action!</strong> @message
+        </div>
+    </div>
+}
+
+@helper AlertMessages()
+{
+    @Message("successMessage", "Created", "success", "The record was created succesfully.")
+    @Message("deleteMessage", "Deleted", "danger", "The record was created succesfully.")
+    @Message("editMessage", "Edited", "success", "The record was edited properly.")
+}
+
+@helper RowSizeDropdown(){
     <div class="col-lg-4 page-size">
         <div class="form-group">
-            <select class="form-control col-lg-1" id="rowsByPage" onchange="changeSize();">
+            <select class="form-control col-lg-1" id="rowsByPage" onclick="changeSize();">
                 <option disabled="" selected="selected">-- Rows by Page --</option>
-                <option value="15">15</option>
-                <option value="30">30</option>
-                <option value="50">50</option>
+                <option>15</option>
+                <option>30</option>
+                <option>50</option>
             </select>
         </div>
     </div>

@@ -27,11 +27,8 @@
             @Html.DisplayNameFor(model => model.PostalCode)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.rowguid)
-        </th>
-        @*<th>
             @Html.DisplayNameFor(model => model.ModifiedDate)
-        </th>*@
+        </th>
         <th></th>
     </tr>
 
@@ -52,12 +49,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.PostalCode)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.rowguid)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.ModifiedDate)
-        </td>*@
+        </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AddressID }) |
             @Html.ActionLink("Details", "Details", new { id=item.AddressID }) |

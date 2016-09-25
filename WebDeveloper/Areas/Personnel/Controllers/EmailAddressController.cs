@@ -8,18 +8,12 @@ using WebDeveloper.Repository;
 
 namespace WebDeveloper.Areas.Personnel.Controllers
 {
-    public class EmailAddressController :  PersonBaseController<EmailAddress>
+    public class EmailAddressController : PersonBaseController<EmailAddress>
     {
-        // GET: Personnel/EmailAddress
-        public EmailAddressController(IRepository<EmailAddress> repository)
-            :base(repository)
+        public EmailAddressController(IRepository<EmailAddress> repository) : base(repository)
         {
-
-
-
         }
-
-        
+        // GET: Personnel/EmailAddress
         public ActionResult Index()
         {
             return View();
@@ -28,11 +22,9 @@ namespace WebDeveloper.Areas.Personnel.Controllers
         public ActionResult EmailByPerson(int id)
         {
             return PartialView("_Email",
-                _repository.ListById(x=>x.BusinessEntityID==id)
+                _repository.ListById(x=> x.BusinessEntityID==id)
                 );
 
         }
-
-       
     }
 }

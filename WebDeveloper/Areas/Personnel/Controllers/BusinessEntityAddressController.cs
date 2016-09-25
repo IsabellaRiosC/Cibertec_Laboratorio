@@ -8,11 +8,12 @@ using WebDeveloper.Repository;
 
 namespace WebDeveloper.Areas.Personnel.Controllers
 {
-    public class PersonPhoneController : PersonBaseController<PersonPhone>
+    public class BusinessEntityAddressController : PersonBaseController<BusinessEntityAddress>
     {
-        public PersonPhoneController(IRepository<PersonPhone> repository): base(repository)
+        public BusinessEntityAddressController(IRepository<BusinessEntityAddress> repository): base(repository)
         {
         }
+        // GET: Personnel/BusinessEntityAddress
         public ActionResult Index()
         {
             return View();

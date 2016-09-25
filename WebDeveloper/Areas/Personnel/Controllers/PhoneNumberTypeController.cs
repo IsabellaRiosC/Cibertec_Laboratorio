@@ -8,9 +8,9 @@ using WebDeveloper.Repository;
 
 namespace WebDeveloper.Areas.Personnel.Controllers
 {
-    public class PersonPhoneController : PersonBaseController<PersonPhone>
+    public class PhoneNumberTypeController : PersonBaseController<PhoneNumberType>
     {
-        public PersonPhoneController(IRepository<PersonPhone> repository): base(repository)
+        public PhoneNumberTypeController(IRepository<PhoneNumberType> repository): base(repository)
         {
         }
         public ActionResult Index()

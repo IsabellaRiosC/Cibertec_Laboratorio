@@ -73,6 +73,55 @@ namespace WebDeveloper.Tests.Controllers
 
         }
 
+
+        [Fact(DisplayName = "EditGetTest")]
+        private void EditGetTest()
+        {
+            BasicConfigMockData();
+            controller = new PersonController(_repository);
+            int personID = 2;
+            var result = controller.Edit(personID) as PartialViewResult;
+            result.ViewName.Should().Be("_Edit");
+
+            var personModelCreate = (PersonViewModel)result.Model;
+            personModelCreate.Person.Should().NotBeNull();
+        }
+
+        [Fact(DisplayName = "EditPostTestOK")]
+        private void EditPostTestOK()
+        {
+            BasicConfigMockData();
+            controller = new PersonController(_repository);
+            int personID = 2;
+            var result = controller.Edit(TestPersonEdit(personID)) as PartialViewResult;
+            result.Should().BeNull();
+        }
+
+        [Fact(DisplayName = "DeletePostTestOK")]
+        private void DeletePostTestOK()
+        {
+            BasicConfigMockData();
+            controller = new PersonController(_repository);
+            int personID = 2;
+            var result = controller.Delete(TestPersonEdit(personID)) as PartialViewResult;
+            result.Should().BeNull();
+
+        }
+
+        [Fact(DisplayName = "DetailGetTest")]
+        private void DetailGetTest()
+        {
+            BasicConfigMockData();
+            controller = new PersonController(_repository);
+            int personID = 4;
+            var result = controller.Details(personID) as PartialViewResult;
+            result.ViewName.Should().Be("_Details");
+
+            var personModelCreate = (PersonViewModel)result.Model;
+            personModelCreate.Person.Should().NotBeNull();
+        }
+
+
         #region Configuration Values
         public void PersonMockList()
         {
@@ -140,6 +189,27 @@ namespace WebDeveloper.Tests.Controllers
 
             _repository = new BaseRepository<Person>(webContextMock.Object);
             controller = new PersonController(_repository);
+        }
+
+
+        private Person TestPersonEdit(int id)
+        {
+            var person = new Person
+            {
+                PersonType = "SC",
+                FirstName = "Isabella",
+                LastName = "Rios",
+                EmailPromotion = 1
+            };
+            person.BusinessEntityID = id;
+            person.rowguid = Guid.NewGuid();
+            person.ModifiedDate = DateTime.Now;
+            person.BusinessEntity = new BusinessEntity
+            {
+                ModifiedDate = DateTime.Now,
+                rowguid = person.rowguid
+            };
+            return person;
         }
         #endregion
     }

@@ -8,22 +8,8 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-@using (Ajax.BeginForm("Delete", new { controller = "Person", area = "Personnel" },
-    new AjaxOptions()
-    {
-        HttpMethod = "Post",
-        InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "modal-body",
-        OnSuccess = "closeModal('delete')"
-
-    }))
-{
-    @Html.AntiForgeryToken()
-
-    @Html.HiddenFor(model => model.BusinessEntityID)
-
+    <hr />
     <dl class="dl-horizontal">
-
         <dt>
             @Html.DisplayNameFor(model => model.PersonType)
         </dt>
@@ -122,11 +108,22 @@
 
     </dl>
 
-
-
+    @using (Ajax.BeginForm("Delete", new { Controller = "Person", Area = "Personnel" },
+                                            new AjaxOptions
+                                            {
+                                                HttpMethod = "Post",
+                                                InsertionMode = InsertionMode.Replace,
+                                                UpdateTargetId = "modal-body",
+                                                OnSuccess = "closeModal('delete')"
+                                            }))
+    {
+        @Html.AntiForgeryToken()        
+        
+        @Html.HiddenFor(model => model.BusinessEntityID)
+        
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> 
-         
+            <input type="submit" value="Delete" class="btn btn-default" />           
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
         </div>
     }
 </div>

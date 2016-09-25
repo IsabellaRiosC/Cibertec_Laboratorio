@@ -10,7 +10,10 @@
 <div>
     <h4>Address</h4>
     <hr />
+
     <dl class="dl-horizontal">
+      
+
         <dt>
             @Html.DisplayNameFor(model => model.AddressLine1)
         </dt>
@@ -69,10 +72,10 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        @Html.HiddenFor(model => model.AddressID)
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.AddressID)
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
