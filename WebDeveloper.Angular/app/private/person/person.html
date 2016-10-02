@@ -7,8 +7,19 @@
                  person-id="{{person.businessEntityID}}"
                  first-name="{{person.firstName}}"                                        
                  last-name="{{person.lastName}}"
-                 modified-date="{{person.modifiedDate}}"
-                 class="col-lg-12">
+                 modified-date="{{person.modifiedDate}}">
+        <a href="" class="btn btn-success" ng-click="vm.getPersonDetail(person.businessEntityID)"
+           data-toggle="modal"
+           data-target="#modal-container">
+             <span class="glyphicon glyphicon-list"></span>Edit
+
+        </a>
 
     </person-card>
+    <modal-popup title="Person">
+
+        <h1>test</h1>
+        <label>Person Id:</label>{{vm.person.businessEntityID}}
+
+    </modal-popup>
 </div>

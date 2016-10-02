@@ -1,0 +1,9 @@
+﻿<div ng-controller="loginController as vm">
+     <form id="loginForm" ng-submit="vm.login()">
+         <label>User Name: </label>
+         <input type="text" ng-model="vm.user.userName"/><br />
+         <label>Password   : </label>
+         <input type="password" ng-model="vm.user.password"/><br />
+         <button type="submit" class="btn-default">Submit</button>
+     </form>
+</div>

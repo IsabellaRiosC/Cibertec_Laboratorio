@@ -16,21 +16,29 @@
 
 
         })
-             .state(
+        
+       
+         .state(
+        "login", {
+
+            url: "/login",
+            templateUrl: "app/public/login/login.html"
+        })
+
+           .state(
         "person", {
-              
+
             url: "/person",
             templateUrl: "app/private/person/person.html"
         })
 
-        .state(
+
+           .state(
         "otherwise", {
-              
+
             url: "path*",
             templateUrl: "app/home.html"
-        }
-
-        );
+        }) ;
 
     }
 

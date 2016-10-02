@@ -14,6 +14,7 @@ namespace WebDeveloper.Angular.App_Start
 
             bundles.Add(new ScriptBundle("~/bundles/angular")
                 .Include("~/Scripts/jquery-3.1.0.js")
+                .Include("~/Scripts/bootstrap.js")
                 .Include("~/Scripts/angular.js"));
 
 
@@ -23,7 +24,9 @@ namespace WebDeveloper.Angular.App_Start
             bundles.Add(new ScriptBundle("~/bundles/app")
               .Include("~/app/app.js")
               .Include("~/app/app.routes.js")
+              .IncludeDirectory("~/app/components", "*.js", true)
               .IncludeDirectory("~/app/shared","*.js",true)
+              .IncludeDirectory("~/app/public","*.js", true)
               .IncludeDirectory("~/app/private", "*.js", true));
 
             bundles.Add(new StyleBundle("~/bundles/css")

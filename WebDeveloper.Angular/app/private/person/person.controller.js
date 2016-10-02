@@ -1,7 +1,7 @@
 ﻿(function () {
 
     'use strict';
-
+    var apiUrl = 'http://localhost/WebDeveloper.API/person/';
      angular.module('app')
     .controller('personController', personController);
 
@@ -12,6 +12,10 @@
          var vm = this;   // se declara la variable para no sobrecargar 
          vm.title = 'Person Controller';
          vm.personList = [];
+         vm.person; // es un default
+
+         vm.getPersonDetail = getPersonDetail;
+        
 
          init();
 
@@ -25,7 +29,7 @@
          function loadData() {
 
              vm.personList = [];
-             var apiUrl = 'http://localhost/WebDeveloper.API/person/';
+          
              var url = apiUrl + 'list/1/15';
              dataService.getData(url)
                  .then(function (result) {
@@ -41,6 +45,25 @@
              });
 
          }
+
+         function getPersonDetail(id) {
+
+            
+             dataService.getData(apiUrl + id)
+                 .then(function (result) {
+                     vm.person = result.data;
+
+
+                 },
+
+             function (error) {
+                 vm.person = null;
+                 console.log(error);
+
+             });
+
+         }
+
     }
 
 
