@@ -8,7 +8,7 @@ using WebDeveloper.Repository;
 
 namespace WebDeveloper.API.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class BaseApiController <T> : ApiController
         where T : class
     {

@@ -16,6 +16,13 @@
 
 
         })
+             .state(
+        "person", {
+              
+            url: "/person",
+            templateUrl: "app/private/person/person.html"
+        })
+
         .state(
         "otherwise", {
               

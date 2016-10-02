@@ -16,7 +16,7 @@
     <RootNamespace>WebDeveloper.Angular</RootNamespace>
     <AssemblyName>WebDeveloper.Angular</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -109,6 +109,10 @@
     <Content Include="app\app.js" />
     <Content Include="app\app.routes.js" />
     <Content Include="app\home.html" />
+    <Content Include="app\private\person\directives\person-card\person-card.html" />
+    <Content Include="app\private\person\directives\person-card\person.card.directive.js" />
+    <Content Include="app\private\person\person.controller.js" />
+    <Content Include="app\private\person\person.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -143,6 +147,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app\shared\data.service.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -169,7 +174,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54682</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54682/</IISUrl>
+          <IISUrl>http://localhost/WebDeveloper.Angular</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
