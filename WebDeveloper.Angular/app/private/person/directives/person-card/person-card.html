@@ -1,24 +1,15 @@
 ﻿<div>
     <div>
-        <label>Person ID : </label>{{personId}}
-
+        <label>Person ID:</label>{{personId}}
     </div>
     <div>
-
-        <label>First Name :</label>{{firstName}}
-
-    </div>
-
-    <div>
-
-        <label>Last Name :</label>{{lastName}}
-
+        <label>First name: </label><span>{{firstName}}</span>
     </div>
     <div>
-
-        <label>Modified Date :</label>{{modifiedDate}}
-
+        <label>Last name: </label><span>{{lastName}}</span>
+    </div>
+    <div>
+        <label>Modified Date: </label><span>{{modifiedDate | date:'MM/dd/yyy'}}</span>
     </div>
     <ng-transclude></ng-transclude>
-
 </div>

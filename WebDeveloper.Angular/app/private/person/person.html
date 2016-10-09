@@ -1,25 +1,78 @@
 ﻿<div ng-controller="personController as vm">
-    
     <h1>{{vm.title}}</h1>
-    
- 
-    <person-card ng-repeat="person in vm.personList" 
-                 person-id="{{person.businessEntityID}}"
-                 first-name="{{person.firstName}}"                                        
-                 last-name="{{person.lastName}}"
-                 modified-date="{{person.modifiedDate}}">
-        <a href="" class="btn btn-success" ng-click="vm.getPersonDetail(person.businessEntityID)"
-           data-toggle="modal"
-           data-target="#modal-container">
-             <span class="glyphicon glyphicon-list"></span>Edit
+    <div class="row">
+        <div class="btn-group col-sm-1" uib-dropdown style="margin: 20px 0;">
+            <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle>
+                {{vm.rowsize}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li role="menuitem" ng-click="vm.setRowSize(15)"><a href>15</a></li>
+                <li role="menuitem" ng-click="vm.setRowSize(30)"><a href>30</a></li>
+                <li role="menuitem" ng-click="vm.setRowSize(50)"><a href>50</a></li>
+                <li role="menuitem" ng-click="vm.setRowSize(100)"><a href>100</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <ul uib-pagination
+            boundary-links="true"
+            total-items="vm.totalRows"
+            ng-model="vm.currentPage"
+            class="pagination-sm nomargin"
+            previous-text="&lsaquo;"
+            next-text="&rsaquo;"
+            first-text="&laquo;"
+            last-text="&raquo;"
+            max-size="vm.maxSize"
+            items-per-page="vm.rowsize"
+            ng-change="vm.pageChanged()"></ul>
 
+
+     
+    </div>    
+        <a href="" ng-click="vm.create();"
+           data-toggle="modal" data-target="#modal-container" class="btn btn-success btn-sm">
+            <span class="glyphicon glyphicon-plus"></span> Create
         </a>
 
-    </person-card>
-    <modal-popup title="Person">
 
-        <h1>test</h1>
-        <label>Person Id:</label>{{vm.person.businessEntityID}}
+        <person-card ng-repeat="person in vm.personList"
+                     person-id="{{person.businessEntityID}}"
+                     first-name="{{person.firstName}}"
+                     last-name="{{person.lastName}}"
+                     modified-date="{{person.modifiedDate}}"
+                     class="col-lg-12">
+            <div class="col-lg-4">
+                <a href="" ng-click="vm.getPersonDetail(person.businessEntityID); vm.update();"
+                   data-toggle="modal" data-target="#modal-container" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </a>
+                <a href="" ng-click="vm.getPersonDetail(person.businessEntityID); vm.details();"
+                   data-toggle="modal" data-target="#modal-container" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-list"></span> Detail
+                </a>
+                <a href="" ng-click="vm.getPersonDetail(person.businessEntityID); vm.delete();"
+                   data-toggle="modal" data-target="#modal-container" class="btn btn-danger btn-sm">
+                    <span class="glyphicon glyphicon-remove"></span> Delete
+                </a>
+            </div>
+            <br />
+        </person-card>
+        <div>
+            <modal-popup title="Person"
+                         button-title="{{vm.buttonTitle}}"
+                         save-function="vm.saveFunction"
+                         read-only="vm.readOnly"
+                         is-delete="vm.isDelete">
+                <!--<h1>Test</h1>
+                Person ID: {{vm.person.businessEntityID}}-->
 
-    </modal-popup>
-</div>
+                <person-edit person="vm.person" read-only="vm.readOnly">
+
+                </person-edit>
+
+            </modal-popup>
+        </div>
+
+
+    </div>

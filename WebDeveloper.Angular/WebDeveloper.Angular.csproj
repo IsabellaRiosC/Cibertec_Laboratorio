@@ -113,6 +113,7 @@
     <Content Include="app\home.html" />
     <Content Include="app\private\person\directives\person-card\person-card.html" />
     <Content Include="app\private\person\directives\person-card\person.card.directive.js" />
+    <Content Include="app\private\person\directives\person-edit\person-edit.html" />
     <Content Include="app\private\person\person.controller.js" />
     <Content Include="app\private\person\person.html" />
     <Content Include="app\public\login\login.controller.js" />
@@ -131,6 +132,7 @@
     <Content Include="Scripts\angular\angular-route.js" />
     <Content Include="Scripts\angular\angular-sanitize.js" />
     <Content Include="Scripts\angular\angular-ui-router.js" />
+    <Content Include="Scripts\angular\ui-bootstrap.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Web.config" />
@@ -154,6 +156,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="app\shared\data.service.js" />
+    <Content Include="app\private\person\directives\person-edit\person.edit.directive.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -34,6 +34,16 @@ namespace WebDeveloper.API.Controllers
 
         } /* 3 UNITES  +  1 UNITEST Que devuelven vacio */
 
+        [HttpGet]
+        [Route("totalrows")]
+        public IHttpActionResult Rows()
+        {
+           
+            return Ok(_repository
+                .GetList().Count);
+
+        }
+
         [HttpPut]
         [Route("")]
         public IHttpActionResult Create(Person person)
@@ -67,11 +77,11 @@ namespace WebDeveloper.API.Controllers
         }
 
         [HttpDelete]
-         [Route("")]
-        public IHttpActionResult Delete(Person person)
+         [Route("{id:int}")]
+        public IHttpActionResult Delete(int? id)
         {
-            if (person == null) return BadRequest();
-            person = _repository.GetById(x => x.BusinessEntityID == person.BusinessEntityID);
+            
+           var person = _repository.GetById(x => x.BusinessEntityID==id);
             _repository.Delete(person);
             return Ok();
 

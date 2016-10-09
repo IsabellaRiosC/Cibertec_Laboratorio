@@ -12,6 +12,26 @@
             </div>
             <div class="modal-body">
                 <ng-transclude></ng-transclude>
+                <button ng-if="!readOnly && !isDelete"
+                        class="btn btn-success"
+                        type="submit" 
+                        ng-click="saveFunction();"
+                       >
+                    {{buttonTitle}}
+                </button>
+                <button ng-if="readOnly && isDelete"
+                        class="btn btn-danger"
+                        type="submit"
+                        ng-click="saveFunction();">
+                    Delete
+                </button>
+                <button type="button"
+                        class="btn btn-warning"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    Close
+                </button>
+
             </div>
         </div>
     </div>
